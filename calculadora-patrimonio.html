@@ -24,12 +24,41 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: var(--fonte-corpo); background: var(--cor-bg); color: var(--cor-texto); min-height: 100vh; line-height: 1.6; }
 
-  .insta-banner { display: none; position: fixed; top: 0; left: 0; right: 0; background: #c8a84b; color: #084449; z-index: 9999; padding: 12px 16px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
-  .insta-banner p { font-family: var(--fonte-corpo); font-size: 0.82rem; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
-  .insta-banner button { background: #084449; color: #ffffff; border: none; border-radius: 8px; padding: 8px 20px; font-family: var(--fonte-corpo); font-size: 0.85rem; font-weight: 700; cursor: pointer; letter-spacing: 0.03em; }
+  /* BOTÃO VOLTAR LINKTREE — fixo no topo */
+  .btn-voltar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--cor-primaria-escuro);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 16px;
+    font-family: var(--fonte-corpo);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    border-bottom: 3px solid var(--cor-acento);
+    letter-spacing: 0.02em;
+  }
+  .btn-voltar.visivel { display: block; }
+
+  /* BANNER INSTAGRAM (para quando não vier do Instagram mas do navegador direto) */
+  .insta-banner {
+    display: none;
+    background: var(--cor-acento);
+    color: #084449;
+    padding: 10px 16px;
+    text-align: center;
+    font-family: var(--fonte-corpo);
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
   .insta-banner.visivel { display: block; }
-  .body-push { padding-top: 0; transition: padding-top 0.2s; }
-  .body-push.com-banner { padding-top: 110px; }
+
+  .body-push { padding-top: 0; }
+  .body-push.com-voltar { padding-top: 42px; }
 
   header { background: var(--cor-primaria); padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: center; gap: 14px; }
   .logo-img { height: 56px; width: auto; display: block; border-radius: 8px; }
@@ -73,7 +102,7 @@
   .ebook-titulo { font-family: var(--fonte-titulo); font-size: 1.2rem; font-weight: 700; color: var(--cor-acento); letter-spacing: 0.05em; text-transform: uppercase; }
   .ebook-desc { font-size: 0.82rem; color: rgba(255,255,255,0.78); line-height: 1.5; text-align: center; width: 100%; }
   .btn-ebook { display: block; width: 100%; background: var(--cor-acento); color: var(--cor-primaria-escuro); border: none; border-radius: 8px; padding: 0.75rem 1.25rem; font-family: var(--fonte-corpo); font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; animation: piscar 1.2s ease-in-out infinite; -webkit-tap-highlight-color: transparent; }
-  @keyframes piscar { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.65; transform: scale(0.97); } }
+  @keyframes piscar { 0%, 100% { opacity:1; transform:scale(1); } 50% { opacity:0.65; transform:scale(0.97); } }
 
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 100; align-items: center; justify-content: center; padding: 1rem; -webkit-overflow-scrolling: touch; }
   .modal-overlay.aberto { display: flex; }
@@ -112,9 +141,14 @@
 </head>
 <body>
 
+<!-- BOTÃO VOLTAR LINKTREE (fixo no topo, só aparece no Instagram) -->
+<a class="btn-voltar" id="btnVoltar" href="https://linktr.ee/fatimaferrazoficial">
+  ← Voltar ao Menu
+</a>
+
+<!-- AVISO INSTAGRAM (informativo, sem botão) -->
 <div class="insta-banner" id="instaBanner">
-  <p>📱 Para uma melhor experiência e envio pelo WhatsApp, abra esta página no seu navegador.</p>
-  <button onclick="abrirNavegador()">Abrir no Navegador</button>
+  📱 Para enviar pelo WhatsApp, toque em <strong>···</strong> e selecione <strong>"Abrir no navegador"</strong>
 </div>
 
 <div class="body-push" id="bodyPush">
@@ -175,6 +209,7 @@
 
 </div>
 
+<!-- MODAL CAPTURA -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-fechar" id="btnFechar">✕</button>
@@ -214,28 +249,22 @@
 </footer>
 
 <script>
-  var WHATSAPP_MENTOR  = "5511961778856";
-  var WEB3FORMS_KEY    = "cbaef61e-16da-44c1-a517-fdb5c374acb4";
+  var WHATSAPP_MENTOR = "5511961778856";
+  var WEB3FORMS_KEY   = "cbaef61e-16da-44c1-a517-fdb5c374acb4";
+  var LINKTREE_URL    = "https://linktr.ee/fatimaferrazoficial";
 
   function isInstagramBrowser() {
     var ua = navigator.userAgent || "";
     return ua.indexOf("Instagram") > -1 || ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
   }
 
-  function abrirNavegador() {
-    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isIOS) {
-      alert("No iPhone:\n1. Toque nos 3 pontinhos (···) no canto inferior da tela\n2. Selecione \"Abrir no navegador\"");
-    } else {
-      var url = window.location.href;
-      window.location.href = "intent://" + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
-    }
-  }
-
   window.addEventListener("load", function() {
     if (isInstagramBrowser()) {
+      // Mostra botão voltar
+      document.getElementById("btnVoltar").classList.add("visivel");
+      document.getElementById("bodyPush").classList.add("com-voltar");
+      // Mostra aviso sobre WhatsApp
       document.getElementById("instaBanner").classList.add("visivel");
-      document.getElementById("bodyPush").classList.add("com-banner");
     }
   });
 
@@ -316,11 +345,11 @@
       abrirWhatsApp(nome, renda, rendaFutura, patrimonio);
     };
     xhr.send(JSON.stringify({
-      access_key:  WEB3FORMS_KEY,
-      subject:     "Novo lead — Calculadora Viva Método: " + nome,
-      nome:        nome,
-      whatsapp:    "(" + ddd + ") " + tel,
-      renda_atual: fmt(renda),
+      access_key:            WEB3FORMS_KEY,
+      subject:               "Novo lead — Calculadora Viva Método: " + nome,
+      nome:                  nome,
+      whatsapp:              "(" + ddd + ") " + tel,
+      renda_atual:           fmt(renda),
       renda_futura:          fmt(rendaFutura),
       patrimonio_necessario: fmt(patrimonio)
     }));
@@ -330,7 +359,12 @@
     var msg = encodeURIComponent(
       "Olá! Me chamo *" + nome + "* e gostaria de receber o e-book gratuito do Viva Método!"
     );
-    window.open("https://wa.me/" + WHATSAPP_MENTOR + "?text=" + msg, "_blank");
+    // whatsapp:// funciona dentro do Instagram no Android e iOS
+    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    var link = isIOS
+      ? "whatsapp://send?phone=" + WHATSAPP_MENTOR + "&text=" + msg
+      : "https://wa.me/" + WHATSAPP_MENTOR + "?text=" + msg;
+    window.open(link, "_blank");
     document.getElementById("modalConteudo").style.display = "none";
     document.getElementById("sucesso").classList.add("visivel");
   }
