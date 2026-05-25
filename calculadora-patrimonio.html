@@ -24,40 +24,12 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: var(--fonte-corpo); background: var(--cor-bg); color: var(--cor-texto); min-height: 100vh; line-height: 1.6; }
 
-  /* BANNER INSTAGRAM */
-  .insta-banner {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #c8a84b;
-    color: #084449;
-    z-index: 9999;
-    padding: 12px 16px;
-    text-align: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-  }
-  .insta-banner p {
-    font-family: var(--fonte-corpo);
-    font-size: 0.82rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-  .insta-banner button {
-    background: #084449;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 20px;
-    font-family: var(--fonte-corpo);
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 0.03em;
-  }
+  .insta-banner { display: none; position: fixed; top: 0; left: 0; right: 0; background: #c8a84b; color: #084449; z-index: 9999; padding: 12px 16px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+  .insta-banner p { font-family: var(--fonte-corpo); font-size: 0.82rem; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .insta-banner button { background: #084449; color: #ffffff; border: none; border-radius: 8px; padding: 8px 20px; font-family: var(--fonte-corpo); font-size: 0.85rem; font-weight: 700; cursor: pointer; letter-spacing: 0.03em; }
   .insta-banner.visivel { display: block; }
   .body-push { padding-top: 0; transition: padding-top 0.2s; }
-  .body-push.com-banner { padding-top: 100px; }
+  .body-push.com-banner { padding-top: 110px; }
 
   header { background: var(--cor-primaria); padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: center; gap: 14px; }
   .logo-img { height: 56px; width: auto; display: block; border-radius: 8px; }
@@ -95,75 +67,14 @@
   .mini-card .mc-label { font-size: 0.7rem; color: var(--cor-muted); font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
   .mini-card .mc-val { font-family: var(--fonte-titulo); font-size: 0.95rem; font-weight: 600; color: var(--cor-primaria); }
 
-  /* EBOOK OFFER */
-  .ebook-offer {
-    background: linear-gradient(135deg, var(--cor-primaria-escuro) 0%, #0d6b73 100%);
-    border-radius: 12px;
-    padding: 1.5rem;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .ebook-top {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-  }
-  .ebook-icon {
-    width: 52px;
-    height: 64px;
-    background: var(--cor-acento);
-    border-radius: 6px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-  }
-  .ebook-titulo {
-    font-family: var(--fonte-titulo);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--cor-acento);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .ebook-desc {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.78);
-    line-height: 1.5;
-    text-align: center;
-    width: 100%;
-  }
+  .ebook-offer { background: linear-gradient(135deg, var(--cor-primaria-escuro) 0%, #0d6b73 100%); border-radius: 12px; padding: 1.5rem; color: #ffffff; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+  .ebook-top { display: flex; align-items: center; gap: 1rem; width: 100%; }
+  .ebook-icon { width: 52px; height: 64px; background: var(--cor-acento); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+  .ebook-titulo { font-family: var(--fonte-titulo); font-size: 1.2rem; font-weight: 700; color: var(--cor-acento); letter-spacing: 0.05em; text-transform: uppercase; }
+  .ebook-desc { font-size: 0.82rem; color: rgba(255,255,255,0.78); line-height: 1.5; text-align: center; width: 100%; }
+  .btn-ebook { display: block; width: 100%; background: var(--cor-acento); color: var(--cor-primaria-escuro); border: none; border-radius: 8px; padding: 0.75rem 1.25rem; font-family: var(--fonte-corpo); font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; animation: piscar 1.2s ease-in-out infinite; -webkit-tap-highlight-color: transparent; }
+  @keyframes piscar { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.65; transform: scale(0.97); } }
 
-  /* BOTÃO PISCANTE */
-  .btn-ebook {
-    display: block;
-    width: 100%;
-    background: var(--cor-acento);
-    color: var(--cor-primaria-escuro);
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    font-family: var(--fonte-corpo);
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-align: center;
-    animation: piscar 1.2s ease-in-out infinite;
-    -webkit-tap-highlight-color: transparent;
-  }
-  @keyframes piscar {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.65; transform: scale(0.97); }
-  }
-
-  /* MODAL */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 100; align-items: center; justify-content: center; padding: 1rem; -webkit-overflow-scrolling: touch; }
   .modal-overlay.aberto { display: flex; }
   .modal { background: var(--cor-card); border-radius: var(--radius); padding: 2rem; max-width: 440px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.25); position: relative; max-height: 90vh; overflow-y: auto; animation: slideUp 0.3s ease; }
@@ -201,7 +112,6 @@
 </head>
 <body>
 
-<!-- BANNER INSTAGRAM -->
 <div class="insta-banner" id="instaBanner">
   <p>📱 Para uma melhor experiência e envio pelo WhatsApp, abra esta página no seu navegador.</p>
   <button onclick="abrirNavegador()">Abrir no Navegador</button>
@@ -252,7 +162,6 @@
         <div class="mc-val" id="mc-anual"></div>
       </div>
     </div>
-
     <div class="ebook-offer">
       <div class="ebook-top">
         <div class="ebook-icon">📘</div>
@@ -264,9 +173,8 @@
   </div>
 </div>
 
-</div><!-- /body-push -->
+</div>
 
-<!-- MODAL CAPTURA -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-fechar" id="btnFechar">✕</button>
@@ -306,39 +214,31 @@
 </footer>
 
 <script>
-  var WHATSAPP_MENTOR = "5511961778856";
-  var FORMSPREE_URL   = "https://formspree.io/f/mjgzrjok";
+  var WHATSAPP_MENTOR  = "5511961778856";
+  var WEB3FORMS_KEY    = "cbaef61e-16da-44c1-a517-fdb5c374acb4";
 
-  // ── DETECÇÃO DO BROWSER DO INSTAGRAM ─────────────────────────────
   function isInstagramBrowser() {
     var ua = navigator.userAgent || "";
     return ua.indexOf("Instagram") > -1 || ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
   }
 
   function abrirNavegador() {
-    // Tenta abrir no navegador padrão
-    var url = window.location.href;
-    // Para iOS: intent não funciona, orienta o usuário
     var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isIOS) {
       alert("No iPhone:\n1. Toque nos 3 pontinhos (···) no canto inferior da tela\n2. Selecione \"Abrir no navegador\"");
     } else {
-      // Android: tenta intent
+      var url = window.location.href;
       window.location.href = "intent://" + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
     }
   }
 
-  // Verifica ao carregar
   window.addEventListener("load", function() {
     if (isInstagramBrowser()) {
-      var banner = document.getElementById("instaBanner");
-      var body   = document.getElementById("bodyPush");
-      banner.classList.add("visivel");
-      body.classList.add("com-banner");
+      document.getElementById("instaBanner").classList.add("visivel");
+      document.getElementById("bodyPush").classList.add("com-banner");
     }
   });
 
-  // ── CALCULADORA ───────────────────────────────────────────────────
   function fmt(v) {
     var n = Math.round(v);
     return "R$ " + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -388,9 +288,9 @@
     var nome = document.getElementById("lead-nome").value.trim();
     var ddd  = document.getElementById("lead-ddd").value.replace(/[^0-9]/g,"");
     var tel  = document.getElementById("lead-tel").value.replace(/[^0-9]/g,"");
-    if (!nome)           { alert("Por favor, informe seu nome."); return; }
-    if (ddd.length < 2)  { alert("Por favor, informe o DDD."); return; }
-    if (tel.length < 8)  { alert("Por favor, informe o número de telefone."); return; }
+    if (!nome)          { alert("Por favor, informe seu nome."); return; }
+    if (ddd.length < 2) { alert("Por favor, informe o DDD."); return; }
+    if (tel.length < 8) { alert("Por favor, informe o número de telefone."); return; }
 
     var renda       = getVal("salario");
     var rendaFutura = getVal("rendaFutura");
@@ -401,31 +301,32 @@
     document.getElementById("formStatus").textContent = "Enviando...";
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", FORMSPREE_URL, true);
+    xhr.open("POST", "https://api.web3forms.com/submit", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         btn.disabled = false;
         document.getElementById("formStatus").textContent = "";
-        abrirWhatsApp(nome, renda, rendaFutura, patrimonio, ddd, tel);
+        abrirWhatsApp(nome, renda, rendaFutura, patrimonio);
       }
     };
     xhr.onerror = function() {
       btn.disabled = false;
-      abrirWhatsApp(nome, renda, rendaFutura, patrimonio, ddd, tel);
+      abrirWhatsApp(nome, renda, rendaFutura, patrimonio);
     };
     xhr.send(JSON.stringify({
-      nome: nome,
-      whatsapp: "(" + ddd + ") " + tel,
+      access_key:  WEB3FORMS_KEY,
+      subject:     "Novo lead — Calculadora Viva Método: " + nome,
+      nome:        nome,
+      whatsapp:    "(" + ddd + ") " + tel,
       renda_atual: fmt(renda),
-      renda_futura: fmt(rendaFutura),
-      patrimonio_necessario: fmt(patrimonio),
-      _subject: "Novo lead — Calculadora Viva Método: " + nome
+      renda_futura:          fmt(rendaFutura),
+      patrimonio_necessario: fmt(patrimonio)
     }));
   }
 
-  function abrirWhatsApp(nome, renda, rendaFutura, patrimonio, ddd, tel) {
+  function abrirWhatsApp(nome, renda, rendaFutura, patrimonio) {
     var msg = encodeURIComponent(
       "Olá! Me chamo *" + nome + "* e gostaria de receber o e-book gratuito do Viva Método!"
     );
