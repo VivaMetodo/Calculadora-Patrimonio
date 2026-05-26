@@ -161,7 +161,7 @@
 <section class="hero">
   <div class="hero-badge">Calculadora gratuita</div>
   <h1>Quanto você precisa ter<br>para <span>viver do patrimônio?</span></h1>
-  <p>Descubra o valor exato que seu patrimônio precisa atingir para gerar a renda que você quer — sem depender de trabalho.</p>
+  <p>Descubra o valor exato que seu patrimônio precisa atingir para gerar a renda que você quer, sem depender de trabalho.</p>
 </section>
 
 <div class="main-card">
@@ -292,7 +292,7 @@
     var diferenca = rendaFutura - renda;
     var desc = "Para gerar " + fmt(rendaFutura) + " por mês sem trabalhar, você precisará de um patrimônio de " + fmt(patrimonio) + " investido de forma consistente.";
     if (diferenca > 0) desc += " Isso representa " + fmt(diferenca) + " a mais por mês do que sua renda atual.";
-    else if (diferenca < 0) desc += " Boa notícia: sua renda atual já supera a meta — o foco agora é preservar e crescer.";
+    else if (diferenca < 0) desc += " Boa notícia: sua renda atual já supera a meta, o foco agora é preservar e crescer.";
     document.getElementById("descResultado").textContent = desc;
     document.getElementById("mc-renda").textContent = fmt(rendaFutura);
     document.getElementById("mc-anual").textContent = fmt(anual);
@@ -325,7 +325,7 @@
     var rendaFutura = getVal("rendaFutura");
     var patrimonio  = rendaFutura * 12 * 25;
 
-    // 1) Abre WhatsApp PRIMEIRO — antes de qualquer chamada assíncrona
+    // 1) Abre WhatsApp PRIMEIRO, antes de qualquer chamada assíncrona
     // Necessário para funcionar dentro do navegador interno do Instagram
     var msg = encodeURIComponent(
       "Olá! Me chamo *" + nome + "* e gostaria de receber o e-book gratuito do Viva Método!"
